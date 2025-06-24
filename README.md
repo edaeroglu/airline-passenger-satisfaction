@@ -1,29 +1,51 @@
-# Airline Passenger Satisfaction Veri Analizi
-Bu çalışmada, uçak yolcularının memnuniyet analizi ve buna hangi faktörlerin sebep olduğu araştırılmıştır. 
+## 🛫 Airline Passenger Satisfaction - Veri Analizi Projesi
+  Bu projede, bir havayolu firmasının yolcu memnuniyetini etkileyen faktörler veri analizi yoluyla incelenmiştir. Proje boyunca temel istatistiksel özetler, eksik ve aykırı değer analizleri, görselleştirme teknikleri kullanılmıştır. Elde edilen bulgular yolcu memnuniyeti hakkında önemli çıkarımlar sunmaktadır. 
 
-1- Veri Seti:
-  Veri seti Kaggle üzerinden kullanılmış olup yolcularla ilgili yaş, cinsiyet, seyahat sınıfı gibi bilgilerin yanı sıra check-in servisi, uçuş içi hizmetleri ve rahatlık gibi konularda da değerlendirmeler içermektedir. 25 sütun içerir. Sütun açıklamaları aşağıda verilmiştir. 
-    Gender: Yolcuların cinsiyeti (Kadın, Erkek)
-    Customer Type: Müşteri türü (Sadık müşteri, sadakatsiz müşteri)
-    Age: Yolcuların gerçek yaşı
-    Type of Travel: Yolcuların uçuş amacı (Kişisel Seyahat, İş Seyahati)
-    Class: Yolcuların uçaktaki seyahat sınıfı (Business, Eco, Eco Plus)
-    Flight distance: Bu yolculuğun uçuş mesafesi
-    Inflight wifi service: Uçak içi wifi hizmetinden memnuniyet seviyesi (0: Uygulanamaz; 1-5)
-    Departure/Arrival time convenient: Kalkış/Varış saati memnuniyet seviyesi uygun
-    Ease of Online booking: Çevrimiçi rezervasyondan memnuniyet seviyesi
-    Gate location: Kapı konumundan memnuniyet seviyesi
-    Food and drink: Yiyecek ve içecekten memnuniyet seviyesi
-    Online boarding: Çevrimiçi binişten memnuniyet seviyesi
-    Seat comfort: Koltuk konforundan memnuniyet seviyesi
-    Inflight entertainment: Uçak içi eğlencenin memnuniyet seviyesi
-    On-board service: Uçak içi hizmetin memnuniyet seviyesi
-    Leg room service: Bacak mesafesi hizmetinin memnuniyet seviyesi
-    Baggage handling: Bagaj taşımanın memnuniyet seviyesi
-    Check-in service: Check-in hizmetinin memnuniyet seviyesi
-    Inflight service: Uçak içi hizmetin memnuniyet seviyesi
-    Cleanliness: Temizlik memnuniyet seviyesi
-    Departure Delay in Minutes: Kalkışta dakika gecikme
-    Arrival Delay in Minutes: Varışta dakika gecikme
-    Satisfaction: Havayolu memnuniyet seviyesi (Memnuniyet, nötr veya memnuniyetsizlik)
+### 📂 Veri Seti
+  Kullanılan veri seti, Kaggle üzerinde yer alan “Airline Passenger Satisfaction” veri setidir. Veri seti; yolcularla ilgili yaş, cinsiyet, seyahat sınıfı gibi bilgilerin yanı sıra check-in servisi, uçuş içi hizmetleri ve rahatlık gibi çeşitli değişkenler aracılığıyla yolcu memnuniyetini anlamaya yöneliktir. 
+  Toplam Gözlem: 103904
+  Sütun Sayısı: 25
 
+### 📊 İstatistiksel Özet
+  Sayısal değişkenler (Age, Flight Distance, Departure Delay in Minutes vb.) için merkezi eğilim ve dağılım ölçümleri hesaplanmıştır.
+  * Ortalama, medyan, standart sapma, min-max değerleri incelenmiştir.
+
+### 🧩 Eksik Değer Analizi
+  Veri setinde yalnızca Arrival Delay in Minutes sütununda eksik değerler tespit edilmiştir.
+  * Eksik değerlerin oranı analiz edilmiştir.
+  * Değişkenin çarpık dağılım göstermesi nedeniyle medyanla doldurmak yerine bu satırlar veri dışına alınmıştır.
+  * missingno kütüphanesi kullanılarak eksik veriler görselleştirilmiştir.
+
+### 🚨 Aykırı Değer (Outlier) Analizi
+  Sayısal değişkenlerde aykırı değer tespiti için IQR (Interquartile Range) yöntemi uygulanmıştır.
+  * Flight Distance, Check-in service, Departure Delay in Minutes, Arrival Delay in Minutes gibi değişkenlerde aykırı değer bulunmuştur.
+  * Bu değerler analiz dışında bırakılmadan, sadece görselleştirme ile işaretlenmiştir.
+  * Boxplot grafikleri ile desteklenmiştir.
+
+### 📈 Görselleştirme
+  Veri seti hem genel istatistik hem de hedef değişken (satisfaction) ile olan ilişkileri gösterecek şekilde detaylı biçimde görselleştirilmiştir.
+  Kullanılan grafik türleri:
+  * Histogram ve boxplot: Sayısal dağılımları görmek için kullanıldı.
+  * Catplot: Tüm hizmet kategorilerinin memnuniyet üzerindeki etkisini analiz etmek için kullanıldı.
+  * Scatterplot: Sayısal iki sütun arasındaki ilişkiyi görmek için kullanıldı.
+  Öne çıkan gözlemler:
+  * Sınıf (Class) ve seyahat türü (Type of Travel) memnuniyeti en çok etkileyen değişkenlerdir.
+  * Business class yolcuları büyük oranda memnun, economy sınıfında memnuniyet çok düşüktür.
+  * Sadık müşteriler ve iş seyahati yapanlar, memnuniyet düzeyi yüksek olan gruplardır.
+  * Hizmet kalitesi (koltuk konforu, eğlence, yiyecek vb.) arttıkça memnuniyet de artmaktadır.
+  * Dijital hizmetler (Wi-Fi, online biniş) memnuniyet açısından zayıf kalmaktadır.
+
+### 📝 Sonuç 
+  Bu proje kapsamında, yolcu memnuniyetine etki eden faktörler analiz edilerek görselleştirilmiş ve yorumlanmıştır. Elde edilen öngörüler, havayolu firmalarının hizmetlerini geliştirmeleri ve müşteri deneyimini artırmaları için kullanılabilir.
+
+airline-passenger-satisfaction-bitirme-projesi.ipynb: Tüm analizlerin yer aldığı Jupyter Notebook
+
+
+
+
+
+
+
+
+  
+   
